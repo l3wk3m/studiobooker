@@ -17,7 +17,7 @@ class Studio(models.Model):
     """
     Django database model for studio spaces
     """
-    studio_id = models.CharField(max_length=100)
+    studio_id = models.CharField(max_length=100, primary_key=True)
     description = models.TextField()
     image = CloudinaryField('image', default='placeholder')
 
@@ -29,7 +29,7 @@ class StudioBooking(models.Model):
     """
     Django database model for available studios
     """
-    booking_id = models.CharField(max_length=32, null=False, editable=False)
+    booking_id = models.CharField(max_length=32, null=False, editable=False, primary_key=True)
     artist = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     studio = models.ForeignKey(Studio, on_delete=models.CASCADE)
     booking_date = models.DateField()
