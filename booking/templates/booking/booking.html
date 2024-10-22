@@ -10,6 +10,19 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
+                {% for studio in studios %}
+                <div class="col-12 col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h1 class="card-text text-muted h6">
+                                
+                                {{ studio }}
+
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
                 <div class="col-12 col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -18,9 +31,6 @@
                             </h1>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-8">
-                    <h3 class="card-text text-muted h6">other information</h3>
                 </div>
             </div>
             <div class="row">
