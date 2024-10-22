@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from users.models import UserProfile
+from users.models import UserProfile, CustomUser
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
