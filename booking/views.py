@@ -9,7 +9,14 @@ from users.models import CustomUser, UserProfile
 
 def index(request):
     # Returns the index.html page
-    return render(request, 'booking/index.html')
+
+    artists = UserProfile.objects.all()
+
+    context = {
+        'artists': artists,
+    }
+
+    return render(request, 'booking/index.html', context)
 
 def booker(request):
 

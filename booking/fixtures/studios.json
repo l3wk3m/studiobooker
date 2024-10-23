@@ -1,0 +1,110 @@
+[
+    {
+        "pk": 1,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "1",
+            "description": "Studio 1 is a vibrant and welcoming space where creativity flourishes and artistic visions come to life. Located in the heart of Dublin, our studio offers a serene and inspiring environment for artists of all levels. Whether you're a seasoned professional or a beginner exploring your artistic potential, we provide the tools, resources, and guidance to support your creative journey. Our studio features spacious workstations, abundant natural light, and state-of-the-art equipment for a wide range of mediums, including painting, drawing, sculpture, and digital art. Alongside open studio hours, we host regular workshops, exhibitions, and collaborative projects, fostering a strong and engaged community of artists. At Studio 1, we believe art is for everyone, and we strive to cultivate an atmosphere of inclusivity, innovation, and support. Join us to explore new techniques, share your ideas, and unleash your artistic potential in a dynamic, collaborative setting.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643884/studio1_pgvqrb.webp"
+            }
+    },
+    {
+        "pk": 2,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "2",
+            "description": "Studio 2 is a creative haven designed for artists and creators to explore, experiment, and thrive. Nestled in the heart of Dublin, our studio offers a spacious and inspiring atmosphere that encourages artistic growth for individuals of all skill levels. From seasoned professionals to those just beginning their creative journey, Studio 2 is the perfect space to bring your artistic visions to life. Our studio is equipped with modern tools and resources for a variety of artistic disciplines, including painting, drawing, sculpture, printmaking, and more. With ample natural light, flexible workspaces, and a collaborative community, Studio 2 provides the ideal setting for both solo projects and group collaborations. In addition to open studio time, we offer a range of workshops, classes, and gallery events, creating a vibrant hub for creativity and learning. At Studio 2, we believe in fostering a welcoming and inclusive environment where ideas can be freely shared, and artistic boundaries pushed. Come and explore the limitless possibilities at Studio 2, where art meets inspiration.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643884/studio2_o0itd6.webp"
+            }
+    },
+    {
+        "pk": 3,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "3",
+            "description": "Studio 3 is a creative sanctuary where art and innovation intersect. Located in the heart of Dublin, our studio provides a vibrant and inspiring environment for artists of all backgrounds and levels of experience. Whether you’re an emerging talent or an established professional, Studio 3 is designed to help you unleash your creativity and refine your craft. Our studio boasts open, flexible workspaces filled with natural light, along with state-of-the-art tools and materials for painting, drawing, mixed media, and sculpture. We believe in fostering a community of collaboration and artistic exchange, offering workshops, classes, and regular exhibitions that allow artists to share their work and ideas. At Studio 3, we value inclusivity, exploration, and growth. Our supportive environment encourages you to take risks, experiment with new techniques, and develop your unique artistic voice. Whether you’re looking for a quiet space to focus on personal projects or an energetic hub for creative collaboration, Studio 3 is the perfect place to nurture your passion for art. Come join us at Studio 3, where every day is a new opportunity for inspiration and artistic discovery.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643884/studio3_ghqwau.webp"
+            }
+    },
+    {
+        "pk": 4,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "4",
+            "description": "Studio 4 is a modern and dynamic art space designed to ignite creativity and foster artistic growth. Situated in the heart of Dublin, Studio 4 offers a welcoming and inspiring environment for artists at all stages of their creative journey. Whether you're a hobbyist exploring new techniques or a professional artist honing your craft, our studio provides the perfect setting to bring your ideas to life. Equipped with spacious work areas, abundant natural light, and high-quality tools and materials, Studio 4 supports a variety of artistic disciplines, including painting, sculpture, ceramics, and digital arts. Our studio not only serves as a place for independent work, but also as a thriving community hub where creativity and collaboration are encouraged. We host a range of workshops, artist talks, and exhibitions, allowing for artistic exchange and growth. At Studio 4, we believe in fostering a nurturing and inclusive environment where artists can take creative risks, experiment with new mediums, and expand their artistic horizons. Join us at Studio 4, where inspiration meets opportunity, and discover the limitless potential of your artistic expression.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643884/studio4_wizbd3.webp"
+            }
+    },
+    {
+        "pk": 5,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "5",
+            "description": "Studio 5 is a creative hub where innovation and artistic expression come together in a vibrant, collaborative space. Located in the heart of Dublin, Studio 5 is designed to inspire artists of all levels, from beginners taking their first steps in the art world to seasoned professionals refining their craft. Our studio is a space where creativity knows no bounds. Studio 5 offers spacious work areas, professional-grade equipment, and a welcoming environment that supports a wide range of artistic practices, including painting, sculpture, printmaking, and digital art. Our space is infused with natural light, making it ideal for artists seeking an inspiring atmosphere to nurture their work. In addition to open studio hours, we offer workshops, classes, and gallery events to encourage artistic growth and community engagement. At Studio 5, we believe in the power of collaboration and the importance of community. Artists here are invited to connect, share ideas, and work alongside others in a supportive, inclusive environment. Whether you're here to explore a new medium or develop your artistic voice, Studio 5 is the perfect place to push your creative boundaries and make meaningful connections. Discover your artistic potential at Studio 5 — where creativity meets community.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643885/studio5_l6gf6s.webp"
+            }
+    },
+    {
+        "pk": 6,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "6",
+            "description": "Studio 6 is a cutting-edge art studio dedicated to fostering creativity, innovation, and artistic growth. Situated in the vibrant cultural heart of Dublin, our studio provides an inspiring environment where artists of all backgrounds can explore their creative potential and take their skills to new heights. Whether you're an emerging artist or an experienced creator, Studio 6 is the perfect space to turn your vision into reality. Our studio features expansive workspaces, high ceilings, and abundant natural light, creating an ideal setting for artists working in a variety of mediums, including painting, drawing, sculpture, and digital arts. In addition to providing professional-grade tools and materials, Studio 6 offers a range of programs, including workshops, artist residencies, and exhibitions, designed to stimulate artistic development and collaboration. At Studio 6, we believe in cultivating a supportive and inclusive community where artists can exchange ideas, learn new techniques, and collaborate on exciting projects. With a focus on experimentation and innovation, we encourage artists to push boundaries, explore new mediums, and challenge themselves creatively. Join us at Studio 6, where creativity is limitless and every artist is empowered to grow, connect, and create.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643885/studio6_hzrfkn.webp"
+            }
+    },
+    {
+        "pk": 7,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "7",
+            "description": "Studio 7 is a vibrant and innovative space where creativity knows no limits. Located in the bustling heart of Dublin, our studio offers a welcoming environment for artists of all disciplines and skill levels. Whether you're an emerging talent or an established artist, Studio 7 provides the perfect setting to explore new techniques, develop your craft, and bring your artistic visions to life. The studio is equipped with versatile workspaces, bathed in natural light, and stocked with high-quality tools and materials for a range of artistic mediums including painting, drawing, ceramics, sculpture, and digital art. At Studio 7, we prioritize creativity, collaboration, and personal growth, offering regular workshops, classes, and exhibitions to keep the artistic spirit alive. Our community fosters inclusivity and innovation, encouraging artists to connect, exchange ideas, and collaborate on projects. Whether you’re seeking a quiet place to focus or a dynamic space to engage with fellow creatives, Studio 7 is designed to inspire and support your artistic journey. Discover endless possibilities and unleash your creativity at Studio 7 — where art and inspiration come together.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643885/studio7_bauzzu.webp"
+            }
+    },
+    {
+        "pk": 8,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "8",
+            "description": "Studio 8 is an inspiring and modern art space designed for artists seeking to explore their creativity and push the boundaries of their artistic practice. Located in the heart of Dublin, our studio offers a welcoming and supportive environment for artists of all levels, from beginners to seasoned professionals. At Studio 8, we believe in the power of artistic expression to transform ideas into reality. With expansive, light-filled workspaces and cutting-edge tools, Studio 8 is fully equipped for a wide range of mediums, including painting, sculpture, mixed media, and digital art. In addition to providing open studio hours, we host a diverse range of workshops, exhibitions, and collaborative projects, encouraging growth and innovation within our artistic community. At Studio 8, we are more than just a workspace; we are a creative community. Our space fosters a sense of collaboration, where artists can connect, share ideas, and inspire one another. Whether you're looking for a quiet space to focus or an opportunity to engage with other creatives, Studio 8 is the perfect place to develop your artistic vision. Join us at Studio 8 and immerse yourself in a space where creativity thrives and artistic possibilities are endless.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643886/studio8_igysqg.webp"
+            }
+    },
+    {
+        "pk": 9,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "9",
+            "description": "Studio 9 is a creative sanctuary where artistic expression takes center stage. Nestled in the heart of Dublin, our studio offers an inspiring and collaborative space for artists of all skill levels. Whether you’re a seasoned professional or just beginning your artistic journey, Studio 9 provides the tools, guidance, and environment you need to bring your creative visions to life. Our studio is equipped with flexible, open workspaces, plenty of natural light, and professional-grade materials, supporting a wide array of artistic practices including painting, ceramics, photography, and digital design. At Studio 9, we believe in nurturing creativity through exploration, providing regular workshops, group projects, and exhibition opportunities that help artists grow, connect, and showcase their work. More than just a studio, Studio 9 is a thriving community where ideas are shared, collaboration is encouraged, and creativity flourishes. Whether you're working independently or engaging with fellow artists, you’ll find an inclusive and supportive atmosphere that inspires growth and innovation. Experience the limitless possibilities of artistic creation at Studio 9, where your imagination can truly shine.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643884/studio9_oagqwz.webp"
+            }
+    },
+    {
+        "pk": 10,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "10",
+            "description": "Studio 10 is a cutting-edge art space where creativity, innovation, and passion for the arts come together. Located in the vibrant Dublin arts district, Studio 10 provides a dynamic and inspiring environment for artists of all backgrounds and experience levels. Whether you’re an experienced professional or a beginner eager to explore your artistic potential, Studio 10 offers the perfect setting to develop your craft. Our studio features spacious, well-lit workspaces designed to accommodate a wide variety of artistic mediums, including painting, drawing, sculpture, photography, and digital media. With access to high-quality materials and tools, as well as regular workshops and classes, Studio 10 encourages experimentation and growth in a supportive community. At Studio 10, collaboration is at the heart of our mission. We foster a creative community where artists can connect, share ideas, and collaborate on exciting projects. Alongside studio time, we host art exhibitions, open critiques, and events that give artists a platform to showcase their work and build connections with others in the local art scene. Step into Studio 10 and discover a world of creative possibilities. Here, your artistic journey has no limits, and every day is an opportunity to create, learn, and be inspired.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643884/studio10_s5wdco.webp"
+            }
+    },
+    {
+        "pk": 11,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "11",
+            "description": "Studio 11 is a vibrant and contemporary art space dedicated to fostering creativity, exploration, and community. Situated in the heart of Dublin, Studio 11 is a haven for artists of all levels, from beginners looking to develop new skills to seasoned professionals seeking a fresh perspective. Our studio provides the perfect environment to unlock your artistic potential and transform ideas into reality. With open, light-filled workspaces and top-quality tools, Studio 11 is designed to accommodate a wide range of artistic mediums, including painting, sculpture, printmaking, photography, and digital art. We believe in hands-on learning and provide a variety of workshops, classes, and mentorship opportunities, allowing artists to experiment and grow within a supportive community. At Studio 11, we value collaboration and inclusivity, creating a welcoming space where artists can share ideas, connect with like-minded individuals, and work on collaborative projects. Our regular exhibitions, artist talks, and community events offer unique opportunities to showcase your work, network, and be inspired by the work of others. Join us at Studio 11, where creativity thrives and the possibilities are endless. Discover a space that encourages exploration, innovation, and the pursuit of artistic excellence.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643885/studio11_sc3wa3.webp"
+            }
+    },
+    {
+        "pk": 12,
+        "model": "booking.studio",
+        "fields": {
+            "studio_id": "12",
+            "description": "Studio 12 is a creative hub where imagination meets craftsmanship. Nestled in the vibrant arts district of Dublin, our studio is a dynamic space designed for artists of all levels to explore, create, and grow. Whether you’re a professional artist fine-tuning your craft or a beginner taking your first creative steps, Studio 12 offers the ideal environment to fuel your artistic journey. Our studio features open, versatile workspaces flooded with natural light, along with professional-grade tools and resources for various artistic disciplines, including painting, ceramics, sculpture, and digital art. Studio 12 provides a creative sanctuary, offering a blend of independent studio time, hands-on workshops, and collaborative projects that inspire exploration and innovation. At Studio 12, we believe that creativity flourishes in community. We foster an inclusive and welcoming atmosphere where artists can connect, share ideas, and collaborate. Regular exhibitions, artist showcases, and community events offer opportunities to display your work, engage with fellow creators, and build lasting connections in the local arts scene. Discover the endless possibilities at Studio 12—where your creativity knows no bounds, and every project is a step toward discovering something new.",
+            "image": "https://res.cloudinary.com/drkz6okfn/image/upload/v1729643885/studio12_yay955.webp"
+            }
+    }
+]

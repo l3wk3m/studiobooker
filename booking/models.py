@@ -22,7 +22,7 @@ class Studio(models.Model):
     image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
-        return self.name
+        return self.studio_id
   
 
 class StudioBooking(models.Model):
