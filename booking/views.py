@@ -30,6 +30,10 @@ def booker(request):
     return render(request, template, context)
 
 def blog(request):
+
+# Will retrieve all posts from the blog model when its set up
+    # post_list = Posts.objects.all() 
+
     template = 'booking/blog.html'
     context = {
         'blog': blog,
