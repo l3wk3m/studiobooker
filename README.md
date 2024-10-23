@@ -996,6 +996,12 @@ All other photos are taken by the website creator, [Luke Maycock](https://github
 
 ## Acknowledgements
 
+Logic for bookings views and function was inspired by:
+[Clinic Booker](https://blog.devgenius.io/django-tutorial-on-how-to-create-a-booking-system-for-a-health-clinic-9b1920fc2b78)
+
+Custom user model setup was taken from
+[Custom User Model](https://learndjango.com/tutorials/django-custom-user-model)
+
 A big thanks to my mentor Ronan McLeland for feedback and direction throughout!
 
 [Back to top](#studiobooker)

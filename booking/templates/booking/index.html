@@ -24,16 +24,15 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- Blog Entries Column -->
+        <!-- Greeting Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for artist in artists %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
                                 <div class="image-flash">
-                                    <p class="author">Hello {{ artist.user }}!</p>
+                                    <p class="author">Hello!</p>
                                 </div>
                             </div>
                             <a href="#" class="post-link">
@@ -46,12 +45,6 @@
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
             </div>
         </div>
     </div>
