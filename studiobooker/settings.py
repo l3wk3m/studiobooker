@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-l3wk3m-studiobooker-yxwy3u90u95.ws.codeinstitute-ide.net', '.herokuapp.com']
+ALLOWED_HOSTS = ['8000-l3wk3m-studiobooker-ofhxau9dil9.ws.codeinstitute-ide.net', '.herokuapp.com']
 
 
 # Application definition
