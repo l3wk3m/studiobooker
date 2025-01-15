@@ -45,3 +45,7 @@ class StudioBooking(models.Model):
     def __str__(self):
         # formatted_start_time = self.start_time.strftime('%Y-%m-%d %H:%M')
         return f"{self.artist.username} | {self.studio} | {self.booking_date} at {self.booking_time}"
+
+        # ^this is where I hit a problem trying to make a booking^
+        # when I change {self.artist.username} to {self.artist.user} there seems to be some problem occurring in the view
+        # I need to copy the booking template ver batim and reverse engineer where my view runs into a problem

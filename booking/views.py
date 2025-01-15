@@ -209,6 +209,7 @@ def userUpdateSubmit(request, id):
     hour = checkEditTime(times, day, id)
     booking = StudioBooking.objects.get(pk=id)
     userSelectedTime = booking.booking_time
+    
     if request.method == 'POST':
         time = request.POST.get("booking_time")
         date = dayToWeekday(day)

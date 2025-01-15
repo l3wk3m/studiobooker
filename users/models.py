@@ -6,9 +6,10 @@ from django.dispatch import receiver  # new
 
 class CustomUser(AbstractUser):
     pass
+    # add additional fields here
 
     def __str__(self):
-        return self.email
+        return self.username
 
 
 class UserProfile(models.Model):
