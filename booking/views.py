@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from datetime import datetime, timedelta
 from django.http import HttpResponse
 from django.contrib import messages
@@ -28,6 +28,26 @@ def booker(request):
         'booker': booker,
     }
     return render(request, template, context)
+
+def studio_detail(request, studio_id):
+    """ A view to show a studio's image and decsription before booking """
+    
+    studio = get_object_or_404(Studio, pk=studio_id)
+
+    template = 'booking/studio_detail.html'
+
+    return render(request, template, {'studio': studio})
+
+#    def product_detail(request, product_id):
+#        """ A view to show individual product details """
+#
+#       product = get_object_or_404(Product, pk=product_id)
+#
+#       context = {
+#          'product': product,
+#     }
+#
+#       return render(request, 'products/product_detail.html', context)
 
 def blog(request):
 
