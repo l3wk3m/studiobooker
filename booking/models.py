@@ -29,7 +29,8 @@ class StudioBooking(models.Model):
     """
     Django database model for available studios
     """
-    booking_id = models.CharField(max_length=32, null=False, editable=False, primary_key=True)
+
+    booking_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     artist = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     studio = models.ForeignKey(Studio, on_delete=models.CASCADE)
     booking_date = models.DateField()
@@ -44,7 +45,7 @@ class StudioBooking(models.Model):
 
     def __str__(self):
         # formatted_start_time = self.start_time.strftime('%Y-%m-%d %H:%M')
-        return f"{self.artist.username} | {self.studio} | {self.booking_date} at {self.booking_time}"
+        return f"{self.booking_id} | {self.artist.username} | {self.studio} | {self.booking_date} at {self.booking_time}"
 
         # ^this is where I hit a problem trying to make a booking^
         # when I change {self.artist.username} to {self.artist.user} there seems to be some problem occurring in the view

@@ -66,11 +66,10 @@ def studio_detail(request, studio_id):
     # Next I'll make sure the user selects a date before continuing
     if request.method == 'POST':
         booking_date = request.POST.get('booking_date')
-
         request.session['booking_date'] = booking_date
         
         # Session data is stored and we're sent to the page where we'll choose our studio timeslot
-        return redirect('booking_submit')
+        return redirect('booking_submit', studio_id=studio_id)
     
     template = 'booking/studio_detail.html'
 
@@ -106,9 +105,13 @@ def booking_submit(request, studio_id):
     maxDate = strdeltatime
 
     # Retrieve stored session data
-    booking_date = request.session.get('booking_date')
+    if 'booking_date' in request.session:
+        booking_date = request.session.get('booking_date')
+        print(f'successfully stored the booking date, its {studio_id} on {booking_date}! - redirecting!')
+    else:
+        print('session data not found!')
 
-    booking_date = request.POST.get('booking_date')
+#    booking_date = request.POST.get('booking_date')
 
 #    studio_id = request.session.get('studio_id')
 #    booking_date = request.session.get('booking_date')
@@ -135,8 +138,7 @@ def booking_submit(request, studio_id):
                             artist = artist,
                             studio_id = studio_id,
                             booking_date = booking_date,
-                            booking_time = "9am to 12pm",
-                            booking_id = 1
+                            booking_time = "9am to 12pm"
                         )
                         messages.success(request, "Booking Saved!")
                         return redirect('bookings')
@@ -153,11 +155,10 @@ def booking_submit(request, studio_id):
 
     # User is given a confirmation message of their studio, date and timeslot
 
-    template = 'booking_submit.html'
+    template = 'booking/booking_submit.html'
 
     context = {
-        'times':hour,
-        'studio': studio,
+        'times': hour,
         'studio_id': studio_id
     }
 
