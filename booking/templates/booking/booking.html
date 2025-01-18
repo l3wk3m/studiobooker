@@ -28,7 +28,9 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h1 class="card-text text-muted h6">
-                                BOOKINGS!
+                                {% if user.is_authenticated %}
+                                    Hi {{ user.username }}!
+                                {% endif %}
                             </h1>
                         </div>
                     </div>

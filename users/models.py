@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(
+    username = models.OneToOneField(
         "users.CustomUser",
         on_delete=models.CASCADE,
     )
@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     # add additional fields for UserProfile
 
     def __str__(self):
-        return f"Profile for {self.user.email}"
+        return f"Profile for {self.username.email}"
 
     class Meta:
         verbose_name = "User Profile"
@@ -29,4 +29,4 @@ class UserProfile(models.Model):
 
 @receiver(post_save, sender=CustomUser)  # new
 def create_or_update_user_profile(sender, instance, created, **kwargs):
-    UserProfile.objects.get_or_create(user=instance)
+    UserProfile.objects.get_or_create(username=instance)

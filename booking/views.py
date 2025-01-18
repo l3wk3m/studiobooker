@@ -18,6 +18,26 @@ def index(request):
 
     return render(request, 'booking/index.html', context)
 
+
+def blog(request):
+
+# Will retrieve all posts from the blog model when its set up
+    # post_list = Posts.objects.all() 
+
+    template = 'booking/blog.html'
+    context = {
+        'blog': blog,
+    }
+    return render(request, template, context)
+
+def studios(request):
+    template = 'booking/studios.html'
+    context = {
+        'studios': studios,
+    }
+    return render(request, template, context)
+
+
 def booker(request):
 
     studios = Studio.objects.all()
@@ -39,36 +59,18 @@ def studio_detail(request, studio_id):
 
     # Check array of weekdays to only show the days that aren't fully booked:
     validateWeekdays = isWeekdayValid(weekdays)
-
-    # Get the studio id
-    # if request.method == 'GET':
-
-    # The rationale here is that HttpRequest.path() takes everything AFTER the domain name and returns it as an array of strings
-    # The studio id will be the second item in that array after 'bookings'
-    # Its then converted into an Int and stored in session data
-#    studio_id = request.GET.items()
-
-
-    #request.session['studio_id'] = studio
-
     
     print(studio)
     print(studio_id)
 
     # Next I'll make sure the user selects a date before continuing
     if request.method == 'POST':
-        date = request.POST.get('booking_date')
-    #    studio = request.POST.get('studio_id')
+        booking_date = request.POST.get('booking_date')
 
-        request.session['booking_date'] = date
-    #    request.session['studio_id'] = studio
-        context = {
-                'studio_id': studio_id,
-                'studio': studio
-            }
+        request.session['booking_date'] = booking_date
+        
         # Session data is stored and we're sent to the page where we'll choose our studio timeslot
-        return redirect('booking_time', context)
-
+        return redirect('booking_submit')
     
     template = 'booking/studio_detail.html'
 
@@ -83,71 +85,15 @@ def studio_detail(request, studio_id):
     return render(request, template, context)
 
 
-def blog(request):
-
-# Will retrieve all posts from the blog model when its set up
-    # post_list = Posts.objects.all() 
-
-    template = 'booking/blog.html'
-    context = {
-        'blog': blog,
-    }
-    return render(request, template, context)
-
-def studios(request):
-    template = 'booking/studios.html'
-    context = {
-        'studios': studios,
-    }
-    return render(request, template, context)
-
 #   THE BELOW VIEW WILL SEND CHOSEN INFO ABOUT THE 'ALREADY SELECTED STUDIO' INTO SESSION ID ON THE STUDIO_DETAIL PAGE
 # A view to submit your preferred time after selecting your studio
-def booking(request):
     # First I'll call a function to check which days are weekdays over the next 14 days and place them in an array called weekdays
-    weekdays = validWeekday(15)
-
-    # Check array of weekdays to only show the days that aren't fully booked:
-    validateWeekdays = isWeekdayValid(weekdays)
-
-    # Get the studio id
-    # if request.method == 'GET':
-
-    # The rationale here is that HttpRequest.path() takes everything AFTER the domain name and returns it as an array of strings
-    # The studio id will be the second item in that array after 'bookings'
-    # Its then converted into an Int and stored in session data
-    studio = int(HttpRequest.path.split("/", )[1])
-
-    print(studio)
-
-    request.session['studio_id'] = studio
-
-    # Next I'll make sure the user selects a date before continuing
-    if request.method == 'POST':
-        date = request.POST.get('booking_date')
-    #    studio = request.POST.get('studio_id')
-
-        request.session['booking_date'] = date
-    #    request.session['studio_id'] = studio
-
-        # Session data is stored and we're sent to the page where we'll choose our studio timeslot
-        return redirect('booking_submit')
-
-    template = 'booking.html'
-
-    # In the context we'll return our valid weekdays from the function we called at the top of this one
-    context = {
-            'weekdays':weekdays,
-            'validateWeekdays':validateWeekdays,
-        }
-
-    return render(request, template, context)
 
 # A view for a user to confirm what time slot they want to book for
 # This view will only allow users to select a timeslot that is not already booked
-def booking_time(request, studio_id):
-    studio_id = request.session.get('studio_id')
-    artist = request.user
+def booking_submit(request, studio_id):
+    
+    artist = UserProfile.objects.get(username=request.user)
     times = [
         "9am to 12pm",
         "12pm to 3pm",
@@ -160,8 +106,13 @@ def booking_time(request, studio_id):
     maxDate = strdeltatime
 
     # Retrieve stored session data
-    date = request.session.get('booking_date')
-    studio = request.session.get('studio_id')
+    booking_date = request.session.get('booking_date')
+
+    booking_date = request.POST.get('booking_date')
+
+#    studio_id = request.session.get('studio_id')
+#    booking_date = request.session.get('booking_date')
+#    studio = request.session.get('studio_id')
 
     # Call a function that only show users timeslots that haven't already been booked
     # This will iterate through the StudioBooking model to see if there is an entry in time for each time_slot using checkTime
@@ -170,23 +121,25 @@ def booking_time(request, studio_id):
 
     #   C L E A N   U P   ! ! !
     
-    hour = checkTime(times, date)
+    hour = checkTime(times, booking_date)
     if request.method == 'POST':
-        time = request.POST.get("booking_time")
-        date = dayToWeekday(day)
+        booking_time = request.POST.get("booking_time")
+        date = dayToWeekday(booking_date)
+        
 
-        if date <= maxDate and date >= minDate:
+        if booking_date <= maxDate and booking_date >= minDate:
             if date == 'Monday' or date == 'Tuesday' or date == 'Wednesday' or date == 'Thursday' or date == 'Friday':
-                if StudioBooking.objects.filter(day=booking_date).count() < 4:
-                    if StudioBooking.objects.filter(day=booking_date, time=booking_time).count() < 1:
+                if StudioBooking.objects.filter(booking_date=booking_date).count() < 4:
+                    if StudioBooking.objects.filter(booking_date=booking_date, booking_time=booking_time).count() < 1:
                         StudioBookingForm = StudioBooking.objects.get_or_create(
                             artist = artist,
                             studio_id = studio_id,
                             booking_date = booking_date,
-                            booking_time = booking_time,
+                            booking_time = "9am to 12pm",
+                            booking_id = 1
                         )
                         messages.success(request, "Booking Saved!")
-                        return redirect('index')
+                        return redirect('bookings')
                     else:
                         messages.success(request, "The Selected Time Has Been Reserved Before!")
                 else:
@@ -200,17 +153,19 @@ def booking_time(request, studio_id):
 
     # User is given a confirmation message of their studio, date and timeslot
 
-    template = 'booking_time.html'
+    template = 'booking_submit.html'
 
     context = {
         'times':hour,
+        'studio': studio,
+        'studio_id': studio_id
     }
 
     return render(request, template, context)
 
 # A view for users to view their bookings
 def userPanel(request):
-    artist = request.artist
+    artist = UserProfile.objects.get(username=request.user)
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
     return render(request, 'userPanel.html', {
         'artist':artist,
@@ -220,7 +175,7 @@ def userPanel(request):
 # A view for users to edit their bookings (will be similar to the booking view)
 def userUpdate(request, id):
     booking = StudioBooking.objects.get(pk=id)
-    userdatepicked = booking.booking_date
+    userdatepicked = StudioBooking.booking_date
     #Copy  booking:
     today = datetime.today()
     minDate = today.strftime('%Y-%m-%d')
@@ -236,7 +191,7 @@ def userUpdate(request, id):
 
     if request.method == 'POST':
         service = request.POST.get('studio_id')
-        day = request.POST.get('booking_date')
+        booking_date = request.POST.get('booking_date')
 
         #Store day and service in django session:
         request.session['booking_date'] = booking_date
@@ -270,18 +225,18 @@ def userUpdateSubmit(request, id):
     studio = request.session.get('studio_id')
     
     #Only show the time of the day that has not been selected before and the time he is editing:
-    hour = checkEditTime(times, day, id)
+    hour = checkEditTime(times, booking_date, id)
     booking = StudioBooking.objects.get(pk=id)
     userSelectedTime = booking.booking_time
     
     if request.method == 'POST':
         time = request.POST.get("booking_time")
-        date = dayToWeekday(day)
+        date = dayToWeekday(booking_date)
 
         if day <= maxDate and day >= minDate:
             if date == 'Monday' or date == 'Tuesday' or date == 'Wednesday' or date == 'Thursday' or date == 'Friday':
-                if StudioBooking.objects.filter(day=booking_date).count() < 4:
-                    if StudioBooking.objects.filter(day=booking_date, time=booking_time).count() < 1 or userSelectedTime == time:
+                if StudioBooking.objects.filter(booking_date=booking_date).count() < 4:
+                    if StudioBooking.objects.filter(booking_date=booking_date, time=booking_time).count() < 1 or userSelectedTime == time:
                         StudioBookingForm = StudioBooking.objects.filter(pk=id).update(
                             artist = artist,
                             studio_id = studio_id,
@@ -347,7 +302,7 @@ def isWeekdayValid(x):
     return validateWeekdays
 
 # A function that returns an array of only available timeslots on a given day
-def checkTime(times, day):
+def checkTime(times, booking_date):
     #Only show the time of the day that has not been selected before:
     x = []
     for k in times:
@@ -356,7 +311,7 @@ def checkTime(times, day):
     return x
 
 # A function that returns an array of only available timeslots on a given day when editing a booking
-def checkEditTime(times, day, id):
+def checkEditTime(times, booking_date, id):
     #Only show the time of the day that has not been selected before:
     x = []
     booking = StudioBooking.objects.get(pk=id)
