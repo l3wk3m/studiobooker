@@ -67,9 +67,10 @@ def studio_detail(request, studio_id):
     if request.method == 'POST':
         booking_date = request.POST.get('booking_date')
         request.session['booking_date'] = booking_date
+        request.session['studio_id'] = studio_id
         
         # Session data is stored and we're sent to the page where we'll choose our studio timeslot
-        return redirect('booking_submit', studio_id=studio_id)
+        return redirect('booking_submit', studio.studio_id)
     
     template = 'booking/studio_detail.html'
 
@@ -106,8 +107,9 @@ def booking_submit(request, studio_id):
 
     # Retrieve stored session data
     if 'booking_date' in request.session:
+        studio_id = request.session.get('studio_id')
         booking_date = request.session.get('booking_date')
-        print(f'successfully stored the booking date, its {studio_id} on {booking_date}! - redirecting!')
+        print(f'successfully stored the booking date and studio id, its {studio_id} on {booking_date}! - redirecting!')
     else:
         print('session data not found!')
 
@@ -138,7 +140,7 @@ def booking_submit(request, studio_id):
                             artist = artist,
                             studio_id = studio_id,
                             booking_date = booking_date,
-                            booking_time = "9am to 12pm"
+                            booking_time = booking_time
                         )
                         messages.success(request, "Booking Saved!")
                         return redirect('bookings')
@@ -159,7 +161,8 @@ def booking_submit(request, studio_id):
 
     context = {
         'times': hour,
-        'studio_id': studio_id
+        'studio_id': studio_id,
+        'booking_date': booking_date
     }
 
     return render(request, template, context)
@@ -169,8 +172,10 @@ def userPanel(request):
     artist = UserProfile.objects.get(username=request.user)
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
     return render(request, 'userPanel.html', {
-        'artist':artist,
-        'bookings':bookings,
+        'artist': artist,
+        'bookings': bookings,
+        'artist': artist,
+        'booking_date': booking_date
     })
 
 # A view for users to edit their bookings (will be similar to the booking view)

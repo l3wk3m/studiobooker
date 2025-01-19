@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block body %}
+{% block content %}
 
-
-
+<div class="row">
+    <div class="col-12">
+        <h1>TESTING THE ADDING OF ADDITIONAL BLOCK CONTENT</h1>
+        <br/>
+        <p>Studio ID is:</p>{{ studio_id }}
+        <p>Booking date selected:</p>{{ booking_date }}
+        <br/>
+        <p>Pick an available time!</p>
+    </div>
+</div>
 
 {% if user.is_authenticated %}
 <h1 class="text-center fPersian mt-3">Online Booking</h1>
 
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black text-center m-5">
-    <form method="post" action="{% url 'booking_submit' %}" class="me-2 ms-2" required>
+    <form method="post" action="#" class="me-2 ms-2" required>
         {% csrf_token %}
         
         <!--input time-->
