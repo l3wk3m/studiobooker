@@ -11,5 +11,4 @@ urlpatterns = [
     path('user_panel/', views.user_panel, name='user_panel'),
     path('user_update/<booking_id>/', views.user_update, name='user_update'),
     path('user_update_submit/<booking_id>/', views.user_update_submit, name='user_update_submit'),
-    path('blog/', views.blog, name="blog"),
 ]
