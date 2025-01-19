@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <h1>Success!</h1>
+        <p>You booking Studio {{ studio_id }} for {{ booking_time }} on {{ booking_date }}</p>
+        <br/>
+        <p>If you want to view or edit your appointments, check out your <a href="{% url 'user_panel' %}">User Panel</a>
+    </div>
+</div>
+
+{% end block %}

@@ -143,7 +143,10 @@ def booking_submit(request, studio_id):
                             booking_time = booking_time
                         )
                         messages.success(request, "Booking Saved!")
-                        return redirect('bookings')
+                        request.session['booking_date'] = booking_date
+                        request.session['booking_time'] = booking_time
+                        request.session['studio_id'] = studio_id
+                        return redirect('booking_success')
                     else:
                         messages.success(request, "The Selected Time Has Been Reserved Before!")
                 else:
@@ -167,11 +170,29 @@ def booking_submit(request, studio_id):
 
     return render(request, template, context)
 
+def booking_success(request):
+
+    messages.success(request, "Booking Saved!")
+
+    studio_id = request.session.get('studio_id')
+    booking_date = request.session.get('booking_date')
+    booking_time = request.session.get('booking_time')
+
+    template = 'booking/booking_success.html'
+    
+    context = {
+        'studio_id': studio_id,
+        'booking_date': booking_date,
+        'booking_time': booking_time
+    }
+
+    return(request, template, context)
+
 # A view for users to view their bookings
-def userPanel(request):
+def user_panel(request):
     artist = UserProfile.objects.get(username=request.user)
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
-    return render(request, 'userPanel.html', {
+    return render(request, 'booking/user_panel.html', {
         'artist': artist,
         'bookings': bookings,
         'artist': artist,
@@ -179,7 +200,7 @@ def userPanel(request):
     })
 
 # A view for users to edit their bookings (will be similar to the booking view)
-def userUpdate(request, id):
+def user_update(request, id):
     booking = StudioBooking.objects.get(pk=id)
     userdatepicked = StudioBooking.booking_date
     #Copy  booking:
@@ -196,7 +217,6 @@ def userUpdate(request, id):
     
 
     if request.method == 'POST':
-        service = request.POST.get('studio_id')
         booking_date = request.POST.get('booking_date')
 
         #Store day and service in django session:
@@ -214,7 +234,7 @@ def userUpdate(request, id):
         })
 
 
-def userUpdateSubmit(request, id):
+def user_update_submit(request, id):
     artist = request.artist
     times = [
         "9am to 12pm",

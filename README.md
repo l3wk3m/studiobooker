@@ -133,7 +133,7 @@ The project is to build a website where you as a user can book a space in a loca
 
 ### User Goals
 
-One of the user goals is to be able to book __________. The user should also have a smooth experience with full CRUD (Create, Read, Update and Delete) accessibility to their bookings. The goal is also to view already created projects and to inspire the user.
+One of the user goals is to be able to book an art studio space. The user should also have a smooth experience with full CRUD (Create, Read, Update and Delete) accessibility to their bookings. The goal is also to view already created projects and to inspire the user.
 
 ### Site Owner Goals
 
@@ -141,7 +141,7 @@ The site owner goal is to facilitate the frictionless booking of studio spaces f
 
 ### User Stories
 
-For the project, four different Epics were created. To them, a total of 13 user stories were created. To view all user stories, they are viewable at the [Projects board](). All user stories were assigned one of the following classes; Must have, Should have, Could have or Won't have. 
+For the project, four different Epics were created. To them, a total of 13 user stories were created. To view all user stories, they are viewable at the [Projects board](https://github.com/users/l3wk3m/projects/4). All user stories were assigned one of the following classes; Must have, Should have, Could have or Won't have. 
 
 The following user stories were completed within the first release of Studio Booker.
 
