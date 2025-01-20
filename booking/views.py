@@ -227,8 +227,9 @@ def user_panel(request):
 # A view for users to edit their bookings (will be similar to the booking view)
 def user_update(request, booking_id):
     artist = UserProfile.objects.get(username=request.user)
-    booking = StudioBooking.objects.get(artist=artist)
-    booking_id = booking.booking_id
+    booking = StudioBooking.objects.get(pk=booking_id)
+    bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
+    #booking_id = booking.booking_id
     userdatepicked = booking.booking_date
     studio_id = request.session.get('studio_id')
     booking_date = booking.booking_date
