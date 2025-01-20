@@ -26,7 +26,7 @@
             <p class="list-group mt-2">Date: {{ booking.booking_date }}</p>
             <p class="list-group mt-2">Time: {{ booking.booking_time }}</p>
             <div class="mt-3 mb-2">
-                <a class="btn btn-primary rounded-3 p-2" href="{% url 'user_update' bid.booking_id %}">Edit Appointment</a>
+                <a class="btn btn-primary rounded-3 p-2" href="{% url 'user_update' booking.booking_id %}">Edit Appointment</a>
             </div>
         </div>
         {% endfor %}
