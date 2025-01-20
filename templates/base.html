@@ -8,10 +8,12 @@
     <title>Studio Booker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
     <!-- Google Fonts CSS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -51,13 +53,13 @@
                                 </a>
                                 <div class="dropdown-menu border-0" aria-labelledby="user-options">
                                         {% if request.user.is_superuser %}
-                                            <a href="" class="dropdown-item">Product Management</a>
+                                            <a href="{% url 'staff_panel' %}" class="dropdown-item">View All Bookings</a>
                                         {% endif %}
-                                        <a href="" class="dropdown-item">My Profile</a>
-                                        <a href="" class="dropdown-item">Logout</a>
+                                        <a href="{% url 'user_panel' %}" class="dropdown-item">My Profile</a>
+                                        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
                                     {% else %}
                                         <a href="{% url 'signup' %}" class="dropdown-item">Register</a>
-                                        <a href="" class="dropdown-item">Login</a>
+                                        <a href="{% url 'login' %}" class="dropdown-item">Log In</a>
                                     {% endif %}
                                 </div>
                             </li>

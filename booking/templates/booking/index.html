@@ -3,24 +3,33 @@
 
 {% block content %}
 
-<!-- index.html content starts here -->
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-
-<div class="image-container">
+<div class="col-12 mt-3 left">
     <div class="row">
-        <div class="col-12">
-            <h1>Welcome to Studio Booker</h1>
-            <p>Click on the 'Book a Studio' link in the header to get started</p>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="image-container">
+                        <div class="image-flash">
+                            <p class="author"></p>
+                        </div>
+                    </div>
+
+                    <hr />{% if user.is_authenticated %}
+                        Hi {{ user.username }}!
+                        <p><a href="{% url 'logout' %}">Log Out</a></p>
+                    {% else %}
+                        <p>You are not logged in</p>
+                        <a href="{% url 'login' %}">Log In</a> |
+                        <a href="{% url 'signup' %}">Sign Up</a>
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<!-- index.html content starts here -->
+
 
 <div class="container-fluid">
     <div class="row">
@@ -33,15 +42,13 @@
                         <div class="card-body">
                             <div class="image-container">
                                 <div class="image-flash">
-                                    <p class="author">Hello!</p>
+                                    <p class="author">Welcome to Studio Booker!</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                            </a>
 
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}}
+                            <p class="card-text text-muted h6">
+                                Why not click out 'Book a Studio' link at the top to get started.
                             </p>
                         </div>
                     </div>
