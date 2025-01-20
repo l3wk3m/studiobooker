@@ -362,7 +362,7 @@ Their collective ERD is displayed below.
 
 #### Hero image
 
-![Hero image at index page]()
+![Hero image at index page](https://res.cloudinary.com/drkz6okfn/image/upload/v1737362710/StudioBooker_HeroImage_odvzk5.webp)
 
 .
 

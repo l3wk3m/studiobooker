@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from booking.views import booker, index, studio_detail
+from booking.views import booker, index, studio_detail, user_panel
 from blog.views import post_list, post_detail, post_edit, post_new
 
 urlpatterns = [
