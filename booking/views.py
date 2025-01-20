@@ -1,3 +1,4 @@
+import uuid
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from datetime import datetime, timedelta
 from django.http import HttpResponse, HttpRequest
@@ -153,16 +154,14 @@ def booking_submit(request, studio_id):
 
     context = {
         'times': hour,
-        'studio_id': studio_id,
-        'booking_date': booking_date
+        'studio_id': studio_id
     }
 
     return render(request, template, context)
 
 def booking_success(request):
 
-    messages.success(request, "Booking Saved!")
-
+    artist = UserProfile.objects.get(username=request.user)
     studio_id = request.session.get('studio_id')
     booking_date = request.session.get('booking_date')
     booking_time = request.session.get('booking_time')
@@ -172,20 +171,23 @@ def booking_success(request):
     context = {
         'studio_id': studio_id,
         'booking_date': booking_date,
-        'booking_time': booking_time
+        'booking_time': booking_time,
+        'artist': artist
     }
 
-    return(request, template, context)
+    return render(request, template, context)
 
 # A view for users to view their bookings
 def user_panel(request):
     artist = UserProfile.objects.get(username=request.user)
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
+    bid = StudioBooking.objects.get(artist=artist)
+    booking_id = bid.booking_id
     return render(request, 'booking/user_panel.html', {
         'artist': artist,
         'bookings': bookings,
-        'artist': artist,
-        'booking_date': booking_date
+        'booking_id': booking_id,
+        'bid': bid
     })
 
 # A view for users to edit their bookings (will be similar to the booking view)
