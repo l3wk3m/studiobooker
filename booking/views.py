@@ -183,6 +183,8 @@ def user_panel(request):
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
     bid = StudioBooking.objects.get(artist=artist)
     booking_id = bid.booking_id
+    studio_id = bid.studio_id
+    request.session['studio_id'] = studio_id
     return render(request, 'booking/user_panel.html', {
         'artist': artist,
         'bookings': bookings,
@@ -191,9 +193,13 @@ def user_panel(request):
     })
 
 # A view for users to edit their bookings (will be similar to the booking view)
-def user_update(request, id):
-    booking = StudioBooking.objects.get(pk=id)
-    userdatepicked = StudioBooking.booking_date
+def user_update(request, booking_id):
+    artist = UserProfile.objects.get(username=request.user)
+    booking = StudioBooking.objects.get(artist=artist)
+    booking_id = booking.booking_id
+    userdatepicked = booking.booking_date
+    studio_id = request.session.get('studio_id')
+    booking_date = booking.booking_date
     #Copy  booking:
     today = datetime.today()
     minDate = today.strftime('%Y-%m-%d')
@@ -214,19 +220,20 @@ def user_update(request, id):
         request.session['booking_date'] = booking_date
         request.session['studio_id'] = studio_id
 
-        return redirect('userUpdateSubmit', id=id)
+        return redirect('user_update_submit', booking_id)
 
 
-    return render(request, 'userUpdate.html', {
+    return render(request, 'booking/user_update.html', {
             'weekdays':weekdays,
             'validateWeekdays':validateWeekdays,
             'delta24': delta24,
-            'id': id,
+            'booking_id': booking_id,
+            'booking_date': booking_date,
         })
 
 
-def user_update_submit(request, id):
-    artist = request.artist
+def user_update_submit(request, booking_id):
+    artist = UserProfile.objects.get(username=request.user)
     times = [
         "9am to 12pm",
         "12pm to 3pm",
@@ -238,30 +245,33 @@ def user_update_submit(request, id):
     strdeltatime = deltatime.strftime('%Y-%m-%d')
     maxDate = strdeltatime
 
-    date = request.session.get('booking_date')
-    studio = request.session.get('studio_id')
+    booking_date = request.session.get('booking_date')
+    studio_id = request.session.get('studio_id')
     
     #Only show the time of the day that has not been selected before and the time he is editing:
-    hour = checkEditTime(times, booking_date, id)
-    booking = StudioBooking.objects.get(pk=id)
+    hour = checkEditTime(times, booking_date, booking_id)
+    booking = StudioBooking.objects.get(booking_id=booking_id)
     userSelectedTime = booking.booking_time
     
     if request.method == 'POST':
-        time = request.POST.get("booking_time")
+        booking_time = request.POST.get("booking_time")
         date = dayToWeekday(booking_date)
 
-        if day <= maxDate and day >= minDate:
+        if booking_date <= maxDate and booking_date >= minDate:
             if date == 'Monday' or date == 'Tuesday' or date == 'Wednesday' or date == 'Thursday' or date == 'Friday':
                 if StudioBooking.objects.filter(booking_date=booking_date).count() < 4:
-                    if StudioBooking.objects.filter(booking_date=booking_date, time=booking_time).count() < 1 or userSelectedTime == time:
-                        StudioBookingForm = StudioBooking.objects.filter(pk=id).update(
+                    if StudioBooking.objects.filter(booking_date=booking_date, booking_time=booking_time).count() < 1 or userSelectedTime == time:
+                        StudioBookingForm = StudioBooking.objects.filter(booking_id=booking_id).update(
                             artist = artist,
                             studio_id = studio_id,
                             booking_date = booking_date,
                             booking_time = booking_time,
                         ) 
                         messages.success(request, "Booking Edited!")
-                        return redirect('index')
+                        request.session['booking_date'] = booking_date
+                        request.session['booking_time'] = booking_time
+                        request.session['studio_id'] = studio_id
+                        return redirect('update_success')
                     else:
                         messages.success(request, "The Selected Time Has Been Reserved Before!")
                 else:
@@ -273,10 +283,28 @@ def user_update_submit(request, id):
         return redirect('userPanel')
 
 
-    return render(request, 'userUpdateSubmit.html', {
+    return render(request, 'booking/user_update_submit.html', {
         'times':hour,
-        'id': id,
+        'booking_id': booking_id,
     })
+
+def update_success(request):
+
+    artist = UserProfile.objects.get(username=request.user)
+    studio_id = request.session.get('studio_id')
+    booking_date = request.session.get('booking_date')
+    booking_time = request.session.get('booking_time')
+
+    template = 'booking/update_success.html'
+    
+    context = {
+        'studio_id': studio_id,
+        'booking_date': booking_date,
+        'booking_time': booking_time,
+        'artist': artist
+    }
+
+    return render(request, template, context)
 
 # Views for superusers to view and edit bookings
 def staffPanel(request):
@@ -328,10 +356,10 @@ def checkTime(times, booking_date):
     return x
 
 # A function that returns an array of only available timeslots on a given day when editing a booking
-def checkEditTime(times, booking_date, id):
+def checkEditTime(times, booking_date, booking_id):
     #Only show the time of the day that has not been selected before:
     x = []
-    booking = StudioBooking.objects.get(pk=id)
+    booking = StudioBooking.objects.get(booking_id=booking_id)
     time = booking.booking_time
     for k in times:
         if StudioBooking.objects.filter(booking_date=booking_date, booking_time=k).count() < 1 or time == k:
