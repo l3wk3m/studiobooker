@@ -181,7 +181,8 @@ def booking_success(request):
 def user_panel(request):
     artist = UserProfile.objects.get(username=request.user)
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
-    bid = StudioBooking.objects.get(artist=artist)
+    #bid = StudioBooking.objects.get(artist=artist)
+    bid = get_object_or_404(StudioBooking, pk=booking_id)
     booking_id = bid.booking_id
     studio_id = bid.studio_id
     request.session['studio_id'] = studio_id
@@ -307,7 +308,7 @@ def update_success(request):
     return render(request, template, context)
 
 # Views for superusers to view and edit bookings
-def staffPanel(request):
+def staff_panel(request):
     today = datetime.today()
     minDate = today.strftime('%Y-%m-%d')
     deltatime = today + timedelta(days=14)
@@ -316,7 +317,7 @@ def staffPanel(request):
     #Only show the Bookings 14 days from today
     items = StudioBooking.objects.filter(booking_date__range=[minDate, maxDate]).order_by('booking_date', 'booking_time')
 
-    return render(request, 'staffPanel.html', {
+    return render(request, 'booking/staff_panel.html', {
         'items':items,
     })
 
