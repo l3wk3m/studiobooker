@@ -181,44 +181,6 @@ def booking_success(request):
 def user_panel(request):
     artist = UserProfile.objects.get(username=request.user)
     bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
-    for booking in bookings:
-        print(booking.booking_id)
-    list = str(bookings).split(" ") #[2] and [14]
-
-    #n = len(booking_id)
-    #k = n/12
-    #x = 0
-    #booking_id_list = []
-
-    #for booking in bookings
-    #    booking_id = list[(2+(x*12))]
-    #    booking_id_list.append(booking_id)
-    #    return booking_id
-
-    #for x in k
-    #    booking_id = list[(2+(x*12))]
-    #    return booking_id
-
-    #if n=13
-    #    pull [2]
-        
-    #    if n=13+(x*12)
-
-    #    elif n=13+(x*12)
-    #if list is 13 items, pull one value
-    #    value will be [2]
-    #if list is 25 items, pull two values
-    #    value will be [2] and [2+12]
-    #if list is 37 items, pull three values
-    #    value will be [2], [2+12] and [2+24]
-
-    #studio_id = str(bookings).split(" ")[6] #and [18]
-    #bid = StudioBooking.objects.get(artist=artist)
-    #bid = StudioBooking.objects.get(pk=booking_id)
-    #bid = get_object_or_404(StudioBooking, pk=booking_id)
-    #booking_id = bookings.booking_id
-    #studio_id = bookings.studio_id
-    #request.session['studio_id'] = studio_id
     return render(request, 'booking/user_panel.html', {
         'artist': artist,
         'bookings': bookings,
@@ -228,8 +190,6 @@ def user_panel(request):
 def user_update(request, booking_id):
     artist = UserProfile.objects.get(username=request.user)
     booking = StudioBooking.objects.get(pk=booking_id)
-    bookings = StudioBooking.objects.filter(artist=artist).order_by('booking_date', 'booking_time')
-    #booking_id = booking.booking_id
     userdatepicked = booking.booking_date
     studio_id = request.session.get('studio_id')
     booking_date = booking.booking_date

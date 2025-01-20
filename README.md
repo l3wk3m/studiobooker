@@ -6,6 +6,10 @@
 
 The project is to build a website where you as a user can book a space in a local art studio. If the user doesn't visit the website with the goal to book a studio space right away, the website should work as an inspiration.
 
+The basic functionality of the website is outlined in the image below:
+
+![Flowchart of Studio Booker Functionality](https://res.cloudinary.com/drkz6okfn/image/upload/v1737359270/Site_Functionality_FlowChart_lcd3gi.png)
+
 ## Table of Contents
 
 - [Studio Booker](#studiobooker)
@@ -17,7 +21,7 @@ The project is to build a website where you as a user can book a space in a loca
     - [User Stories](#user-stories)
       - [Epic 1 - User account creation process](#epic-1---user-account-creation-process)
       - [Epic 2 - Development of a studio booking system](#epic-2---development-of-a-course-booking-system)
-      - [Epic 3 - Development of user testimonials](#epic-3---development-of-user-testimonials)
+      - [Epic 3 - Development of Studio Blog](#epic-3---development-of-user-testimonials)
       - [Epic 4 - Enhancing website aesthetics](#epic-4---enhancing-website-aesthetics)
   - [Design](#design)
     - [Color Scheme](#color-scheme)
@@ -72,7 +76,7 @@ The project is to build a website where you as a user can book a space in a loca
       - [Available studios](#available-studios)
       - [Available studios pagination](#available-studios-pagination)
       - [Confirm studio change modal](#confirm-studio-change-modal)
-    - [News page](#news-page)
+    - [Blog page](#blog-page)
     - [Sign up page](#sign-up-page-1)
     - [Sign in page](#sign-in-page-1)
     - [Sign out page](#sign-out-page-1)
@@ -110,7 +114,7 @@ The project is to build a website where you as a user can book a space in a loca
       - [Success page](#success-page-2)
       - [My bookings page](#my-bookings-page-2)
       - [Edit booking page](#edit-booking-page-2)
-      - [News page](#news-page-1)
+      - [Blog page](#blog-page-1)
       - [Sign up page](#sign-up-page-2)
       - [Sign in page](#sign-in-page-2)
       - [Sign out page](#sign-out-page-2)
@@ -173,7 +177,7 @@ As a site owner I would like to have a comprehensive booking system so that user
 
 **User Story - Viewing available studios**
 
-As a Site User I can easily view all available studios so that I can book a studio based on my availability
+As a Site User I can easily view all current studios so that I can book a studio based on my availability
 
 - Acceptance Criteria 1  
 As a site user the booking page is visited displaying a list of available studios  
@@ -185,9 +189,9 @@ As a site user, the studios list includes crucial details, such as the studio's 
 As a Site User I can book a studio so that I can secure my exclusive place
 
 - Acceptance Criteria 1  
-As a Site User I can visit the booking page and view a "Book" button next to / within my desired studio / time slot 
+As a Site User I can visit the stuio page and view a list of available dates next to / within my desired studio / time slot 
 - Acceptance Criteria 2
-As a Site User I can click the "Book" button and recieve confirmation of my choice of studio
+As a Site User I can click submit my date and time selection for the given studio and recieve confirmation of my choice of studio
 
 **User Story - Viewing my bookings**
 
@@ -200,10 +204,10 @@ Given the user has a booked studio associate with their account, they can view t
 
 **User Story - Modifying an existing booking**
 
-As a Site User / Admin I can change the date or details of my existing studio bookings so that I can adjust my schedule
+As a Site User / Admin I can change the date or details of my existing studio bookings so that I can adjust my schedule (given the booking is more than 24 hours away)
 
 - Acceptance Criteria 1  
-Given the site user has an existing booking, they can modify their bookings via the 'My Bookings' page
+Given the site user has an existing booking, they can modify their bookings via the 'User Panel' page
 
 **User Story - Cancelling a booking**
 
@@ -214,46 +218,32 @@ Given the user has a booked course
 - Acceptance Criteria 2  
 Given the user has a booked course 
 
-**User Story - Implement modal pop-up confirmations for booking and booking changes**
+#### Epic 3 - Developing Blog functionality
 
-As a site user I can receive immediate, clear confirmation requests in the form of modal pop-ups whenever I attempt to make any changes to my bookings so that instantly understand the impact of my actions
-
-- Acceptance Criteria 1  
-Given a user is on the booking or booking modification page when the user initiates a new booking or change to an existing booking, a modal pop-up should immediately appear, confirming the booking or change  
-- Acceptance Criteria 2  
-Given a modal pop-up is displayed to the user, if the user clicks confirm it will confirm the booking / change of booking with the user and update the relevant database models
-- Acceptance Criteria 3  
-Given a modal pop-up is displayed to the user when the user clicks the "Cancel" button the modal closes without making any modifications to the booking
-
-#### Epic 3 - Developing User Testimonial functionality
-
-As a site owner I can have a user-friendly testimonials section so that visitors can easily send feedback about their experiences if they've booked with Studio Booker before and can see the feedback of previous users
+As a site owner I can have a user-friendly blog section so that visitors can easily keep up with the goings on of the different studios and our plans for the future.
 
 **User Story - Accessing the testimonial form**
 
-As a site user I can easily find and access the testimonial form from any page on the website so that I am as encouraged to leave feedback as is possible
+As a site user I can easily find and access all of the blog posts, as well as click into each of the posts for expanded details
 
 - Acceptance Criteria 1  
-Given the user is anywhere at the website, a clear link to the testimonials page is available on every page, either in the navigation menu or footer  
-- Acceptance Criteria 2  
+Given the user is anywhere at the website, a clear link to the blog page is available on every page, either in the navigation menu or footer  
 
-**User Story - Submitting a testimonial**
+**User Story - Submitting a blog post**
 
-As a site user I can submit a testimonial using the form so that I can communicate my with the studios and this website
-
-- Acceptance Criteria 1  
-Given the user has any feedback or experience booking with Studio Booker   
-- Acceptance Criteria 2  
-
-- Acceptance Criteria 3  
-
-
-**User Story - Receive confirmation after sending testimonial form**
-
-As a site user I can receive immediate confirmation that my testimonial has been sent successfully when I submit the form so that I am assured my testimonial has been received
+As a site superuser I can submit a blog post which will be viewable by site users on the blog page
 
 - Acceptance Criteria 1  
-I should see a confirmation message on the website indicating that my message has been sent successfully  
+Given the user visits the website in any capacity (no login / registration required) they will be able to view the blog posts of the studio owners
+
+**User Story - Editing Blog Posts**
+
+As a site superuser I can edit details of a post I have published via a clickable link on the post's details page, giving the superuser CRUD capabilities of the blog model
+
+- Acceptance Criteria 1  
+I should see a link to an Edit Post page on the post details page if logged in as a superuser
+- Acceptance Criteria 2
+Any edits I make and submit should edit all the relevant fields of that Blog entry in the blog model  
 
 #### Epic 4 - Enhancing website aesthetics
 
@@ -265,21 +255,15 @@ As a site user I can easily navigate and view content so that I can use any devi
 
 - Acceptance Criteria 1  
 Given the user is visiting the site the website automatically adjusts its layout based on the screen size and orientation regardless of the device being used
-- Acceptance Criteria 2  
-Given the user is 
-- Acceptance Criteria 3  
-Given the user is  
 
 **User Story - Using appealing fonts and color scheme**
 
-As a site user I can visit the website with appealing fonts and a cohesive color scheme so that 
+As a site user I can visit the website with appealing fonts and a cohesive color scheme so that I'm encouraged to use the service again
 
 - Acceptance Criteria 1  
-Given the user doesn't only use screen reader 
+Given the user doesn't only use screen reader the soft pastel green visuals will create a cohesive visual language evenly applied across the website
 - Acceptance Criteria 2  
-Given the user doesn't only use screen reader
-- Acceptance Criteria 3  
-Given the user doesn't only use screen reader
+Given the user doesn't only use screen reader, the user will be able to notice consistency in the art design of the website
 
 
 ## Design
@@ -288,7 +272,7 @@ The design is aiming to be to be modern but easy to read. It should draw the att
 
 ### Color Scheme
 
-The color scheme is set to  
+The color scheme is set to a soft pastel green palette to complement the art work generated for each of the studio images
 
 ### Typography
 
@@ -296,7 +280,7 @@ The typography was chosen to
 
 ### Imagery
 
-All the images are chosen to 
+All the images are chosen to be cartoonish, artful and appealing
 
 ### Wireframes
 
@@ -348,11 +332,9 @@ All the images are chosen to
 
 Three different models were used in the making of the website.
 
-![ERD of Artist Model](docs/images/Artists_ERD.webp)
+Their collective ERD is displayed below.
 
-![ERD of Studio Model](docs/images/Studio_ERD.webp)
-
-![ERD of Studio Model](docs/images/StudioBooking_ERD.webp)
+![ERD of Studio Booker Website](https://res.cloudinary.com/drkz6okfn/image/upload/v1737357952/StudioBooker_ERD_mkmviw.png)
 
 ## Features
 
@@ -422,15 +404,9 @@ If the user is visiting the index page without being signed in, there is a sign 
 
 .
 
-#### Testimonial form
+#### Blog
 
-![The testimonial form at the about page]()
-
-.
-
-#### Testimonials Form
-
-![The response after submitting the testimonials form]()
+![The Blog page with a list of posts]()
 
 .
 
@@ -448,23 +424,11 @@ The different are listed in a grid format and colour-coded using bootstrap's fun
 
 .
 
-#### Booking pagination
-
-![Pagination at booking page]()
-
-.
-
 #### Confirm booking modal
 
 ![Confirmation modal after a booking button in pressed]()
 
 .
-
-#### Double booked modal
-
-![Modal to show that the user already has a booking at the chosen studio space]()
-
-A double booking modal is triggered when the user tries to book a .
 
 ### Success page
 
@@ -480,7 +444,7 @@ After a successful booking, a text that confirm the booking appears.
 
 Under the confirmation text, three navigation buttons are visible; "View my bookings", "Home" and "Book another studio". On smaller devices, only "View my bookings" and "Book another studio" are visible. These buttons are there to make the user to stay at the website after a successful booking.
 
-### My bookings page
+### User Panel - the my bookings page
 
 #### No bookings - text
 
@@ -498,45 +462,27 @@ When the user doesn't have any active bookings, a text informs the user about it
 
 ![Text to notice the user that they have at least one active booking]()
 
-When the user has at least one booking, 
+When the user has at least one booking, the details of that booking will appear, along with an option to edit that booking
 
 #### Active bookings - booked studios
 
 ![The user bookings are presented]()
 
-The user bookings are presented so that the booking that is next in time appears first. Each booked studio card has an Edit button and a Cancel button. When the Edit button is pressed, the user gets directed to the edit booking page. When the Cancel button is pressed, a confirmation modal is triggered. These two buttons allows the user to edit and delete the booked session if the user has to change their plans.
-
-#### Active bookings pagination
-
-![My bookings pagination]()
-
-If the user has more than four active bookings, a pagination appears below the active bookings. This is to enhance the user experience, to make it easier for the user to see their active bookings.
-
-#### Confirm cancellation modal
-
-![Modal that the user gets to assure that they want to cancel their booking](doc/confirm-delete.webp)
-
-When the user presses the Cancel button in their active bookings, a confirm cancellation modal is triggered. This is to make sure the user didn't press Cancel by mistake. The Confirm button in the modal is red to mark that if you press it, something that is irreversible will happen.
+The user bookings are presented so that the superuser has access to a list of all booked studios at which times and by who. This was they can plan studio maintenance accordingly.
 
 ### Edit booking page
 
-#### Available Studios
+#### Select a New Date
 
-![All available studios presented as booking buttons]()
+![A user can see the list of available dates for the studio they have booked from the dropdown]()
 
-All available studios are presented in a  .
+All available dates are presented for each weekday across the next 14 days. Unavailable / booked dates will not appear in the dropdown.
 
-#### Available Studios Pagination
+#### Select a New Timeslot
 
-![Available Studios Pagination]()
+![Available Timeslots]()
 
-If there are more than eight available studios to select from, pagination appears. This is to enhance the user experience, to avoid scrolling through a wall of available studios.
-
-#### Confirm studio change modal
-
-![Confirmation modal to ensure the user wants to change their studio booking]()
-
-The confirmation modal ensures that the user wants to edit their booking to the selected .
+The user can see the list of available remaining timeslots for the studio and date they have chosen. Unavailble / booked options will not appear on the dropdown.
 
 ### Sign up page
 
@@ -594,7 +540,8 @@ The tips suggests to the user what they can do; refresh the page or go back to t
 
 Several features can be added in the future.
 
-- 
+- I would add a CRUD feature for the Blog so that a superuser could create a blogpost from the superuser panel
+- I would also make it so that the superuser panel allows them to cancel other users' bookings in case they're informally informed of such changes.
 
 ## Testing
 
@@ -606,10 +553,10 @@ Several features can be added in the future.
 
 All the pages were tested at the [W3C Markup Validation Service](). The index page validation is presented above, all the other validations are linked below.
 
-- [About page](doc/)
+- [Home page](doc/)
 - [Booking page]()
 - [My bookings]()
-- [News page]()
+- [Blog page]()
 - [Edit booking]()
 - [Success page]()
 - [404 page]()
